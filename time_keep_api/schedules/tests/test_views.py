@@ -31,7 +31,7 @@ class TestScheduleClockIn:
         response = auth_client.post(self.url)
         assert response.status_code == 200
         assert Schedule.objects.filter(
-            user=user, 
+            user=user,
             start_datetime__date=timezone.now().date(),
             end_datetime__isnull=True
         ).count() == 1
