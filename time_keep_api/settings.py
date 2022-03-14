@@ -88,13 +88,7 @@ WSGI_APPLICATION = "time_keep_api.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
-DEFAULT_DATABASE = config(
-    "DATABASE_URL",
-    default="postgres://postgres:postgres@localhost:5432/postgres",
-    cast=dj_database_url.parse,
-)
-
-DATABASES = {"default": DEFAULT_DATABASE}
+DATABASES = {"default": dj_database_url.config(conn_max_age=600, ssl_require=True)}
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
