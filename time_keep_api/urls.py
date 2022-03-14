@@ -15,13 +15,17 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 
 from time_keep_api.schema import schema_view
 
-api_v1_patterns = []
+api_v1_patterns = [
+    path("token/", TokenObtainPairView.as_view(), name="token_obtain_pair"),
+    path("token/refresh/", TokenRefreshView.as_view(), name="token_refresh"),
+]
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    # path("api/v1/", include(arg=(api_v1_patterns, "v1_patterns"), namespace="api_v1")),
+    path("api/v1/", include(arg=(api_v1_patterns, "v1_patterns"), namespace="api_v1")),
     path("", schema_view.with_ui("redoc", cache_timeout=0), name="schema-redoc"),
 ]

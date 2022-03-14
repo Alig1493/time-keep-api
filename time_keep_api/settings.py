@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     "corsheaders",
     "drf_yasg",
     "django_filters",
+    "time_keep_api.schedules",
 ]
 
 MIDDLEWARE = [
