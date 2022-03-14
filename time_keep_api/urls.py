@@ -22,6 +22,7 @@ from time_keep_api.schema import schema_view
 api_v1_patterns = [
     path("token/", TokenObtainPairView.as_view(), name="token_obtain_pair"),
     path("token/refresh/", TokenRefreshView.as_view(), name="token_refresh"),
+    path("schedules/", include(arg=("time_keep_api.schedules.urls", "schedules"), namespace="schedules"))
 ]
 
 urlpatterns = [
