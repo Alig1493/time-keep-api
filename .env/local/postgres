@@ -1,0 +1,4 @@
+POSTGRES_USER=time_keep_api
+POSTGRES_PASSWORD=time_keep_api
+POSTGRES_DB=time_keep_api
+PGDATA=/var/lib/postgresql/data/pgdata

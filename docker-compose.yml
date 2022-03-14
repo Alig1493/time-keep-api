@@ -1,0 +1,22 @@
+version: "3"
+
+services:
+  web:
+    build: .
+    env_file:
+      - .env/local/django
+    networks:
+      - time-keep-api_postgres
+      - default
+    volumes:
+      - .:/app
+      - ./media:/app/media
+    command: >
+      bash -c "./manage.py migrate &&
+               ./manage.py runserver 0.0.0.0:8005"
+    ports:
+      - "8005:8005"
+
+networks:
+  time-keep-api_postgres:
+    external: true
